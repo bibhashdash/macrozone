@@ -2,6 +2,7 @@ import { addMeal } from '@/storage/meals';
 import { colors, globalStyles } from '@/styles/global';
 import { router } from 'expo-router';
 import { useState } from 'react';
+import * as Haptics from 'expo-haptics';
 import {
     Alert,
     StyleSheet,
@@ -39,7 +40,7 @@ export default function AddMealScreen() {
         setFat('');
 
         Alert.alert('Success', 'Meal added successfully!');
-
+        await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         // @ts-ignore
         router.push("/");
     };
